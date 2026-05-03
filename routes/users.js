@@ -65,4 +65,29 @@ users.put('/users/:id', async(req,res)=>{
 })
 
 
+// Delete Operation route
+users.delete('/users/:id', async(req,res)=>{
+  const {id} = req.params;
+  try{
+    const deletedUser = await User.findByIdAndDelete(id);
+
+    if(!deletedUser){
+      res.json({
+        success:false,
+        message:"user not fond"
+      })
+    }
+    res.status(200).json({
+      success:true,
+      user: deletedUser
+    })
+  }catch(err){
+    res.status(500).json({
+      success:false,
+      message: err.message
+    })
+
+  }
+})
+
 export default users;
