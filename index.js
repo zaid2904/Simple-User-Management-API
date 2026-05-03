@@ -4,12 +4,12 @@ import connectDB from "./db.js";
 import users from "./routes/users.js";
 
 
-const app = express();
+const app = express(); //register a express at application level
 const PORT = process.env.PORT;
 // body parser
-app.use(express.json())
-app.use('/api', users);
-// Hit the api /api/users
+// app.use(express.json()) // inbuild middleware for parse a json  
+app.use('/api', users); // loaded a router file at application level 
+// Hit the api localhost:3000/api/users use any method -> get,post,put,delete
 dotenv.config();
 // connect to database
 connectDB();

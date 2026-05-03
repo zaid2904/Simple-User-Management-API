@@ -4,7 +4,7 @@ import User from "../models/userModel.js";
 const users = express.Router();
 
 
-// get wala Route
+// get Route
 users.get('/users', async (req,res)=>{
   try{
     const users = await User.find();
@@ -18,7 +18,7 @@ users.get('/users', async (req,res)=>{
   }
 })
 
-// Create wala route
+// Create route
 users.post('/users', async(req,res)=>{
   try{
     const {name , email , password} =  req.body;
