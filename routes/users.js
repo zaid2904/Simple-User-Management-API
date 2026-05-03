@@ -38,4 +38,31 @@ users.post('/users', async(req,res)=>{
   }
 })
 
+// update route 
+users.put('/users/:id', async(req,res)=>{
+  const {id} = req.params;
+  const {name , email, password } = req.body;
+
+  try{
+    const updatedUser = await User.findByIdAndUpdate(id, {name,password,email})
+    if(!updatedUser){
+      res.json({
+        message: "User not found"
+      })
+    }
+  // if you have updated user successfully then 
+  res.status(200).json({
+    success:true,
+    user:updatedUser
+  })
+}
+  catch(err){
+    res.status(500).json({
+      success:false,
+      message: err.message
+    })
+  }
+})
+
+
 export default users;
