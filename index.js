@@ -3,8 +3,9 @@ import express from "express";
 import connectDB from "./db.js";
 import users from "./routes/users.js";
 
+
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT;
 // body parser
 app.use(express.json())
 app.use('/api', users);
@@ -22,6 +23,6 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(PORT, () => {
+  console.log(`Example app listening on port ${PORT}`)
 })
